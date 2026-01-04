@@ -1,0 +1,27 @@
+
+version: '3.8'
+
+services:
+  thread_net: # This service runs the Actual app
+    image: thread_net:latest
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - IS_DOCKER='1'
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1 # If you went you can remove this line because our app allow all hosts in 'settings.py'
+    depends_on:
+      - db # This is our database service
+    command: >
+      sh -c "sleep 10 && python manage.py migrate &&
+          python manage.py runserver 0.0.0.0:8000"
+
+  db: # This service runs the PostgreSQL database
+    image: postgres
+    environment:
+      - POSTGRES_DB=threadNet_db # The name of the database
+      - POSTGRES_USER=threadNet_user #  Username for the database
+      - POSTGRES_PASSWORD=threadNet_secrete_password # User password (If you see this, change your password right now, and rebuild you container)
