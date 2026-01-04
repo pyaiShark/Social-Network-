@@ -74,6 +74,12 @@
 
 ### Installation
 
+#### Clone repo
+```bash
+git clone https://github.com/pyaiShark/Full-Stack-Email-Application
+cd Full-Stack-Email-Application
+```
+
 #### Method 1: Using UV (Recommended)
 
 ```bash
