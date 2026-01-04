@@ -1,0 +1,15 @@
+#body {
+    margin: 12px;
+}
+#profile {
+    margin: 12px;
+}
+#following_post {
+    margin: 12px;
+}
+svg {
+    cursor: pointer;
+}
+a {
+    cursor: pointer;
+}

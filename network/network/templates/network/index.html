@@ -1,0 +1,24 @@
+{% extends "network/layout.html" %} {% load static %} {% block body %}
+<div id="alert"></div>
+<div id="body">
+    <h3>All Posts</h3>
+    {% if user.is_authenticated %}
+    <form action="" id="post">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">New Post</h5>
+                {% csrf_token %}
+                <textarea id="post_data" class="form-control mb-2" name="content" required></textarea>
+                <button class="btn btn-primary">Post</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+</div>
+<div id="profile"></div>
+<div id="following_post"></div>
+<div id="view_post"></div>
+{% endblock %} 
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
